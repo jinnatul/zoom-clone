@@ -8,14 +8,14 @@ const app = express();
 const server = http.Server(app);
 const io = socket(server);
 
+// controller
+liveService(io);
+
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 // route
 app.use(appRoute);
-
-// controller
-liveService(io);
 
 const port = process.env.PORT || 3000;
 server.listen(port, () => {
